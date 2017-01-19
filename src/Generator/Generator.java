@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by kvanwijngaarden on 18/01/2017.
  */
 public class Generator {
-    private Generator.GeneratorService genService = new Generator.GeneratorService();
+    private GeneratorService genService = new GeneratorService();
 
     public ArrayList GetDefinition(String name, String code){
         return genService.getDefinition(name, code);
