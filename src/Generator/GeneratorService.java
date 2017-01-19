@@ -1,14 +1,25 @@
 package Generator;
 
-import BusinessRule.IBusinessRule;
+import Database.DatabaseService;
+
+import java.util.ArrayList;
 
 /**
- * Created by Kvanwijngaarden on 17-1-2017.
+ * Created by kvanwijngaarden on 18/01/2017.
  */
 public class GeneratorService {
-    private Generator generator = new Generator();
+    DatabaseService dbService = new DatabaseService();
 
-    public void generateBusinessRule(IBusinessRule rule){
-        generator.getTemplate(rule);
+    public String getTemplate(){
+        return dbService.getTemplate();
     }
+
+    public ArrayList getDefinition(String name, String code){
+        return dbService.getDefinition(name, code);
+    }
+
+    public void CreateTemplate(String name, String code){
+        new Generator().CreateTemplate(name, code);
+    }
+
 }

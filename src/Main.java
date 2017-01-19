@@ -1,19 +1,15 @@
-import BusinessRule.BusinessRuleService;
+import Generator.GeneratorService;
 
 /**
- * Created by Kvanwijngaarden on 17-1-2017.
+ * Created by kvanwijngaarden on 18/01/2017.
  */
-
-//sdfsdfsdf sdf sdfsd f sdf ads f
 public class Main {
 
     public static void main(String args[]){
+        GeneratorService gen = new GeneratorService();
 
-        BusinessRuleService businessRuleService = new BusinessRuleService();
-
-        businessRuleService.creatAttibuteRangeRule("code", "category", "description", "Sjaak","table", "column");
-
-        businessRuleService.getBusinessRule("Sjaak");
+        gen.CreateTemplate("Mooie naam", "Rare Code");
 
     }
+
 }
