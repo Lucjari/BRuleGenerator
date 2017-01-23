@@ -16,7 +16,7 @@ public class GeneratorService {
         return dbService.getTemplate();
     }
 
-    public HashMap getDefinition(String name, String code){
+    public Map getDefinition(String name, String code){
         return dbService.getDefinition(name, code);
     }
 

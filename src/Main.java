@@ -9,7 +9,6 @@ public class Main {
         GeneratorService gen = new GeneratorService();
 
         gen.CreateTemplate("Mooie naam", "Rare Code");
-
+        gen.CreateTemplate("Hallo", "daar");
     }
-
 }

@@ -2,6 +2,7 @@ package Generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Map;
 public class Generator {
     private GeneratorService genService = new GeneratorService();
 
-    public HashMap GetDefinition(String name, String code){
+    public Map GetDefinition(String name, String code){
         return genService.getDefinition(name, code);
     }
 
@@ -20,15 +21,17 @@ public class Generator {
 
     public void CreateTemplate(String name, String code){
         String template = GetTemplate();
-        HashMap definition = new HashMap();
+        Map definition = new HashMap();
         definition = GetDefinition(name, code);
 
-        String test = template.replaceAll("STEEKWOORD" , "" + definition.get(0));
-        System.out.println(test);
-
+        Iterator it = definition.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            template.replaceAll("STEEKWOORD", pair.getKey() + " = " + pair.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+        System.out.println(template);
     }
-
-
 }
 
 

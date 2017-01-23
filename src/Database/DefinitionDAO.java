@@ -9,11 +9,11 @@ import java.util.Map;
  */
 public class DefinitionDAO {
 
-    public HashMap getBusinessDefinition(String name, String code){
-        HashMap def = new HashMap();
+    public Map getBusinessDefinition(String name, String code){
+        Map def = new HashMap();
 
-        def.put("key", name);
-        def.put("value", code);
+        def.put("name", name);
+        def.put("code", code);
 
         return def;
 

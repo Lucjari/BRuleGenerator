@@ -19,7 +19,6 @@ public class TemplateDAO {
         }catch (IOException e){
             System.out.println(e);
         }
-
         return content;
     }
 }
