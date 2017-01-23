@@ -1,6 +1,5 @@
 package Database;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,11 +8,12 @@ import java.util.Map;
  */
 public class DefinitionDAO {
 
-    public HashMap getBusinessDefinition(String name, String code){
-        HashMap def = new HashMap();
+    public Map getBusinessDefinition(String name, String code, String tekst){
+        Map def = new HashMap();
 
-        def.put("key", name);
-        def.put("value", code);
+        def.put("NAME", name);
+        def.put("CODE", code);
+        def.put("TEKST", tekst);
 
         return def;
 

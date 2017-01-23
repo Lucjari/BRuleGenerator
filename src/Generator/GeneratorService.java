@@ -2,8 +2,6 @@ package Generator;
 
 import Database.DatabaseService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -16,12 +14,12 @@ public class GeneratorService {
         return dbService.getTemplate();
     }
 
-    public HashMap getDefinition(String name, String code){
-        return dbService.getDefinition(name, code);
+    public Map getDefinition(String name, String code, String tekst){
+        return dbService.getDefinition(name, code, tekst);
     }
 
-    public void CreateTemplate(String name, String code){
-        new Generator().CreateTemplate(name, code);
+    public void CreateTemplate(String name, String code, String tekst){
+        new Generator().ExecuteTemplate(name, code, tekst);
     }
 
 }

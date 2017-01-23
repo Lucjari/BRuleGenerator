@@ -1,7 +1,5 @@
 package Generator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -10,25 +8,27 @@ import java.util.Map;
 public class Generator {
     private GeneratorService genService = new GeneratorService();
 
-    public HashMap GetDefinition(String name, String code){
-        return genService.getDefinition(name, code);
+    public Map GetDefinition(String name, String code, String tekst) {
+        return genService.getDefinition(name, code, tekst);
     }
 
-    public String GetTemplate(){
+    public String GetTemplate() {
         return genService.getTemplate();
     }
 
-    public void CreateTemplate(String name, String code){
+    public void ExecuteTemplate(String name, String code, String tekst) {
         String template = GetTemplate();
-        HashMap definition = new HashMap();
-        definition = GetDefinition(name, code);
+        Map<String, String> definition = GetDefinition(name, code, tekst);
 
-        String test = template.replaceAll("STEEKWOORD" , "" + definition.get(0));
-        System.out.println(test);
+
+        for (Map.Entry<String, String> entry : definition.entrySet()) {
+            template = template.replaceAll("\\b"+entry.getKey()+"\\b", entry.getValue());
+        }
+
+        System.out.println(template);
+
 
     }
-
-
 }
 
 

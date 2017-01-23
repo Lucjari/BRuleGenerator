@@ -8,7 +8,7 @@ public class Main {
     public static void main(String args[]){
         GeneratorService gen = new GeneratorService();
 
-        gen.CreateTemplate("Mooie naam", "Rare Code");
+        gen.CreateTemplate("Mooie naam", "Rare Code", "ok");
 
     }
 
