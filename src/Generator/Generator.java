@@ -1,6 +1,8 @@
 package Generator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by kvanwijngaarden on 18/01/2017.
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 public class Generator {
     private GeneratorService genService = new GeneratorService();
 
-    public ArrayList GetDefinition(String name, String code){
+    public HashMap GetDefinition(String name, String code){
         return genService.getDefinition(name, code);
     }
 
@@ -18,7 +20,7 @@ public class Generator {
 
     public void CreateTemplate(String name, String code){
         String template = GetTemplate();
-        ArrayList definition = new ArrayList();
+        HashMap definition = new HashMap();
         definition = GetDefinition(name, code);
 
         String test = template.replaceAll("STEEKWOORD" , "" + definition.get(0));

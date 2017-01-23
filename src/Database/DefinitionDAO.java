@@ -1,17 +1,19 @@
 package Database;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by kvanwijngaarden on 18/01/2017.
  */
 public class DefinitionDAO {
 
-    public ArrayList getBusinessDefinition(String name, String code){
-        ArrayList<String> def = new ArrayList<String>();
+    public HashMap getBusinessDefinition(String name, String code){
+        HashMap def = new HashMap();
 
-        def.add(name);
-        def.add(code);
+        def.put("key", name);
+        def.put("value", code);
 
         return def;
 

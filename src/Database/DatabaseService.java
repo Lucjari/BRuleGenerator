@@ -1,6 +1,7 @@
 package Database;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by kvanwijngaarden on 18/01/2017.
@@ -14,7 +15,7 @@ public class DatabaseService {
         return temDao.getBusinessTemplate();
     }
 
-    public ArrayList getDefinition(String name, String code){;
+    public HashMap getDefinition(String name, String code){;
         return defDoa.getBusinessDefinition(name, code);
     }
 
