@@ -12,12 +12,12 @@ public class Generator {
         return genService.getDefinition(name, code);
     }
 
-    public String GetTempalte(){
+    public String GetTemplate(){
         return genService.getTemplate();
     }
 
     public void CreateTemplate(String name, String code){
-        String template = GetTempalte();
+        String template = GetTemplate();
         ArrayList definition = new ArrayList();
         definition = GetDefinition(name, code);
 

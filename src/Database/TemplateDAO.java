@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class TemplateDAO {
 
-    public String getBusinisTemplate(){
+    public String getBusinessTemplate(){
 
 
         String content = "";

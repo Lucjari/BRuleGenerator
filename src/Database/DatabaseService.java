@@ -7,11 +7,11 @@ import java.util.ArrayList;
  */
 public class DatabaseService {
 
-    DefinitionDOA defDoa = new DefinitionDOA();
+    DefinitionDAO defDoa = new DefinitionDAO();
     TemplateDAO temDao = new TemplateDAO();
 
     public String getTemplate(){
-        return temDao.getBusinisTemplate();
+        return temDao.getBusinessTemplate();
     }
 
     public ArrayList getDefinition(String name, String code){;
