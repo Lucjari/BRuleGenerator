@@ -13,7 +13,7 @@ public class DefinitionDAO {
 
         def.put("NAME", name);
         def.put("CODE", code);
-        def.put("TEKST", tekst);
+        def.put("TEXT", tekst);
 
         return def;
 
