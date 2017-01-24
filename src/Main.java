@@ -1,4 +1,4 @@
-import Database.DBTemplateDAO;
+import Generator.GeneratorService;
 
 import java.sql.SQLException;
 
@@ -7,18 +7,11 @@ import java.sql.SQLException;
  */
 public class Main {
 
-    public static void main(String args[]){
-//        GeneratorService gen = new GeneratorService();
-//
-//        gen.CreateTemplate("Mooie naam", "Rare Code", "ok");
+    public static void main(String args[]) throws SQLException{
+        GeneratorService gen = new GeneratorService();
+        System.out.println(gen.getTemplate(1));
 
+        gen.createTemplate("Mooie naam", "Rare Code", "Dit is een stukje tekst.", 1);
 
-        DBTemplateDAO test = new DBTemplateDAO();
-        try{
-            System.out.println(test.getTemplate(1));
-        } catch (SQLException e) {
-        System.out.println("ERROR: Unable to Connect to Database.");
     }
-    }
-
 }

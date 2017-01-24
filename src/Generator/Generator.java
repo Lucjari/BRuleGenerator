@@ -1,5 +1,6 @@
 package Generator;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 /**
@@ -8,17 +9,17 @@ import java.util.Map;
 public class Generator {
     private GeneratorService genService = new GeneratorService();
 
-    public Map GetDefinition(String name, String code, String tekst) {
+    public Map getDefinition(String name, String code, String tekst) {
         return genService.getDefinition(name, code, tekst);
     }
 
-    public String GetTemplate() {
-        return genService.getTemplate();
+    public String getTemplate(int templateid) throws SQLException {
+        return genService.getTemplate(templateid);
     }
 
-    public void ExecuteTemplate(String name, String code, String tekst) {
-        String template = GetTemplate();
-        Map<String, String> definition = GetDefinition(name, code, tekst);
+    public void executeTemplate(String name, String code, String tekst, int templateid) throws SQLException {
+        String template = getTemplate(templateid);
+        Map<String, String> definition = getDefinition(name, code, tekst);
 
 
         for (Map.Entry<String, String> entry : definition.entrySet()) {

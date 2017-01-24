@@ -1,5 +1,6 @@
 package Database;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 /**
@@ -7,15 +8,15 @@ import java.util.Map;
  */
 public class DatabaseService {
 
-    DefinitionDAO defDoa = new DefinitionDAO();
-    TemplateDAO temDao = new TemplateDAO();
+    DefinitionDAO definitionDAO = new DefinitionDAO();
+    TemplateDAO templateDAO = new TemplateDAO();
 
-    public String getTemplate(){
-        return temDao.getBusinessTemplate();
+    public String getTemplate(int templateid) throws SQLException {
+        return templateDAO.getTemplate(templateid);
     }
 
     public Map getDefinition(String name, String code, String tekst){;
-        return defDoa.getBusinessDefinition(name, code, tekst);
+        return definitionDAO.getBusinessDefinition(name, code, tekst);
     }
 
 }

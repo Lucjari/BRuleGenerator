@@ -1,25 +1,38 @@
 package Database;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
 /**
- * Created by kvanwijngaarden on 18/01/2017.
+ * Created by Martijn on 24-1-2017.
  */
+import java.sql.*;
+
 public class TemplateDAO {
+    private Connection connection;
+    private Statement statement;
 
-    public String getBusinessTemplate(){
+    public TemplateDAO(){}
 
+    public String getTemplate(int templateid) throws SQLException{
+        String query = "SELECT TEMPLATE_VALUE FROM TEMPLATE where TEMPLATE_ID=" + templateid;
+        ResultSet rs = null;
+        String templateValue = null;
+        try {
+            connection = Jdbc.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
 
-        String content = "";
+            while(rs.next()){
+                    templateValue = rs.getString("TEMPLATE_VALUE");
+                }
 
-        try{
-            content = new Scanner(new File("src//Database//test.txt")).useDelimiter("\\Z").next();
-        }catch (IOException e){
-            System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println("ERROR: Unable to Connect to Database.");
         }
-
-        return content;
+        finally {
+            rs.close();
+                statement.close();
+                connection.close();
+        return templateValue;
     }
+
+}
 }
