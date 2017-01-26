@@ -16,7 +16,7 @@ public class TemplateDAO {
         ResultSet rs = null;
         String templateValue = null;
         try {
-            connection = Jdbc.getConnection();
+            connection = Jdbc.getToolConnection();
             statement = connection.createStatement();
             rs = statement.executeQuery(query);
 
