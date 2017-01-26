@@ -9,17 +9,17 @@ import java.util.Map;
 public class Generator {
     private GeneratorService genService = new GeneratorService();
 
-    public Map getDefinition(String name, String code, String tekst) {
-        return genService.getDefinition(name, code, tekst);
+    public Map getBRDefinition(int brID) throws SQLException {
+        return genService.getBRDefinition(brID);
     }
 
     public String getTemplate(int templateid) throws SQLException {
         return genService.getTemplate(templateid);
     }
 
-    public void executeTemplate(String name, String code, String tekst, int templateid) throws SQLException {
+    public void executeTemplate(int templateid, int brID) throws SQLException {
         String template = getTemplate(templateid);
-        Map<String, String> definition = getDefinition(name, code, tekst);
+        Map<String, String> definition = getBRDefinition(brID);
 
 
         for (Map.Entry<String, String> entry : definition.entrySet()) {

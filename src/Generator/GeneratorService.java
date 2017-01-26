@@ -15,12 +15,12 @@ public class GeneratorService {
         return dbService.getTemplate(templateid);
     }
 
-    public Map getDefinition(String name, String code, String tekst){
-        return dbService.getDefinition(name, code, tekst);
+    public Map getBRDefinition(int brID) throws SQLException{
+        return dbService.getBRDefinition(brID);
     }
 
-    public void createTemplate(String name, String code, String tekst, int templateid) throws SQLException{
-        new Generator().executeTemplate(name, code, tekst, templateid);
+    public void executeTemplate(int templateid, int brID) throws SQLException{
+        new Generator().executeTemplate(templateid, brID);
     }
 
 }

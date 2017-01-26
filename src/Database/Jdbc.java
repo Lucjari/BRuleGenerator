@@ -24,6 +24,7 @@ public class Jdbc {
             System.out.println("Connecting to database...");
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
+            System.out.println(e);
             System.out.println("ERROR: Unable to Connect to Database.");
         }
         return connection;

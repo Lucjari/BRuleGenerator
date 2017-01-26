@@ -8,15 +8,15 @@ import java.util.Map;
  */
 public class DatabaseService {
 
-    DefinitionDAO definitionDAO = new DefinitionDAO();
+    BRDefinitionDAO definitionDAO = new BRDefinitionDAO();
     TemplateDAO templateDAO = new TemplateDAO();
 
     public String getTemplate(int templateid) throws SQLException {
         return templateDAO.getTemplate(templateid);
     }
 
-    public Map getDefinition(String name, String code, String tekst){;
-        return definitionDAO.getBusinessDefinition(name, code, tekst);
+    public Map getBRDefinition(int brID) throws SQLException{;
+        return definitionDAO.getBusinessRuleDefinition(brID);
     }
 
 }
