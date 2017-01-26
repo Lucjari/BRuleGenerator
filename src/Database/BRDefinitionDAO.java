@@ -22,7 +22,7 @@ public class BRDefinitionDAO {
             rs = statement.executeQuery(query);
 
             while(rs.next()){
-                BRDef.put("TEM_ID", rs.getString("TEMPLATE_ID"));
+                BRDef.put("NAME", rs.getString("NAME"));
             }
         } catch (SQLException e) {
         System.out.println("ERROR: Unable to Connect to Database.");
