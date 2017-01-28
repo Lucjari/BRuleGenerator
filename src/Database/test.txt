@@ -1,3 +1,0 @@
-Dit is een test bestand wat een template moet voorstellen.
-We gaan zoeken naar bepaalde steekwoorden en die vervangen door waardes vanuit Java.
-De steekwoorden zien er zo uit: [NAME] [CODE] [TEXT]

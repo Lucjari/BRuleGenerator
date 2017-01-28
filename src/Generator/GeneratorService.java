@@ -1,26 +1,21 @@
 package Generator;
 
-import Database.DatabaseService;
-
 import java.sql.SQLException;
 import java.util.Map;
 
-/**
- * Created by kvanwijngaarden on 18/01/2017.
- */
 public class GeneratorService {
-    DatabaseService dbService = new DatabaseService();
+    private Generator generator = new Generator();
 
-    public String getTemplate(int templateid) throws SQLException{
-        return dbService.getTemplate(templateid);
+    public String getTemplate(int languageID, int ruletypeID) throws SQLException{
+        return generator.getTemplate(languageID, ruletypeID);
     }
 
     public Map getBRDefinition(int brID) throws SQLException{
-        return dbService.getBRDefinition(brID);
+        return generator.getBRDefinition(brID);
     }
 
-    public void executeTemplate(int templateid, int brID) throws SQLException{
-        new Generator().executeTemplate(templateid, brID);
+    public void executeTemplate(int languageID, int ruletypeID, int brID, String DB_URL, String USER, String PASS) throws SQLException{
+        new Generator().executeTemplate(languageID, ruletypeID, brID, DB_URL, USER, PASS);
     }
 
 }

@@ -1,18 +1,18 @@
 package Database;
 
-/**
- * Created by Martijn on 24-1-2017.
- */
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class TemplateDAO {
+
+//Deze DAO klasse haalt de template uit de tooldatabase die overeenkomt met de taal en businessrule type van de te genereren businessrule
+class TemplateDAO {
     private Connection connection;
     private Statement statement;
 
-    public TemplateDAO(){}
-
-    public String getTemplate(int templateid) throws SQLException{
-        String query = "SELECT TEMPLATE_VALUE FROM TEMPLATE where TEMPLATE_ID=" + templateid;
+    String getTemplate(int languageID, int ruletypeID) throws SQLException{
+        String query = "SELECT TEMPLATE_VALUE FROM GTEMPLATE where GLANGUAGE_LANG_ID=" + languageID + " AND GRULETYPE_RULETYPE_ID=" + ruletypeID;
         ResultSet rs = null;
         String templateValue = null;
         try {
@@ -33,8 +33,10 @@ public class TemplateDAO {
             if (statement != null){
                 statement.close();}
             if (connection != null){
-                connection.close();}
-        return templateValue;
+                connection.close();
+                System.out.println("Connection to database closed.");}
+
+            return templateValue;
     }
 
 }
