@@ -2,16 +2,21 @@ import Generator.GeneratorService;
 
 import java.sql.SQLException;
 
-/**
- * Created by kvanwijngaarden on 18/01/2017.
- */
+
+//Alles wordt nu nog via de Main opgeroepen. Dit (en de methodes) moet(en) aangepast worden zodra de templates in de database staan en er samen met de restful webservice vanuit java getest kan worden.
 public class Main {
 
     public static void main(String args[]) throws SQLException{
         GeneratorService gen = new GeneratorService();
-        System.out.println(gen.getTemplate(1));
 
-        gen.createTemplate("Mooie naam", "Rare Code", "Dit is een stukje tekst.", 1);
+        //test voor het ophalen van een template uit de tool database
+        System.out.println(gen.getTemplate(2, 10) + "\n");
+
+        //test voor het ophalen van businessrule definitions uit de tool database
+        System.out.println(gen.getBRDefinition(2) + "\n");
+
+        //deze pas testen als er een goede template + definitie in database staat
+        //gen.executeTemplate(parameters invoeren die kloppen met template en definitie);
 
     }
 }
