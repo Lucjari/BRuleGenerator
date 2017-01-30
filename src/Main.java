@@ -9,14 +9,9 @@ public class Main {
     public static void main(String args[]) throws SQLException{
         GeneratorService gen = new GeneratorService();
 
-        //test voor het ophalen van een template uit de tool database
-        System.out.println(gen.getTemplate(2, 10) + "\n");
 
-        //test voor het ophalen van businessrule definitions uit de tool database
-        System.out.println(gen.getBRDefinition(2) + "\n");
 
-        //deze pas testen als er een goede template + definitie in database staat
-        //gen.executeTemplate(parameters invoeren die kloppen met template en definitie);
-
+//        gen.getTemplate(gen.getBRDefinition(2));
+        gen.generateTemplate(34);
     }
 }

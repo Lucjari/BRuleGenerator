@@ -12,25 +12,34 @@ class Generator {
         return dbService.getBRDefinition(brID);
     }
 
-    String getTemplate(int languageID, int ruletypeID) throws SQLException {
-        return dbService.getTemplate(languageID, ruletypeID);
+    String getTemplate(Map<String, String> brdefinition) throws SQLException {
+        return dbService.getTemplate(brdefinition);
     }
 
-    void executeTemplate(int languageID, int ruletypeID, int brID, String DB_URL, String USER, String PASS) throws SQLException {
-        String template = getTemplate(languageID, ruletypeID);
+    String generateTemplate(int brID) throws SQLException {
         Map<String, String> definition = getBRDefinition(brID);
+        String template = getTemplate(definition);
 
-
-        for (Map.Entry<String, String> entry : definition.entrySet()) {
-            template = template.replaceAll("\\b"+entry.getKey()+"\\b", entry.getValue());
-        }
-
-        //uitprinten van gegenereerde template ter controle voor test
+        //Printen template voor vervangen steekwoorden
         System.out.println(template);
 
-        dbService.sendBusinessRule(template, DB_URL, USER, PASS);
+        for (Map.Entry<String, String> entry : definition.entrySet()) {
+            template = template.replaceAll("\\b"+"xx"+entry.getKey()+"xx"+"\\b", entry.getValue());
+        }
+
+        //printen van gegenereerde template na vervangen steekwoorden
+        System.out.println(template);
+
+        return template;
+    }
+
+    void executeTemplate(int brID) throws SQLException{
+        Map<String, String> BRDefinition = dbService.getBRDefinition(brID);
+        Map<String, String> DBCredentials = dbService.getDBCredentials(BRDefinition);
+        String generatedTemplate = generateTemplate(brID);
+
+        dbService.sendBusinessRule(generatedTemplate, DBCredentials);
 
     }
 }
-
 

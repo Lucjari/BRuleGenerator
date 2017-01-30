@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 
 //Deze DAO klasse haalt de template uit de tooldatabase die overeenkomt met de taal en businessrule type van de te genereren businessrule
@@ -11,8 +12,12 @@ class TemplateDAO {
     private Connection connection;
     private Statement statement;
 
-    String getTemplate(int languageID, int ruletypeID) throws SQLException{
-        String query = "SELECT TEMPLATE_VALUE FROM GTEMPLATE where GLANGUAGE_LANG_ID=" + languageID + " AND GRULETYPE_RULETYPE_ID=" + ruletypeID;
+    String getTemplate(Map<String, String> brdefinition) throws SQLException{
+        String languageID = brdefinition.get("GLANGUAGE_LANG_ID");
+        String ruletypeID = brdefinition.get("GRULETYPE_RULETYPE_ID");
+        String triggerOrConstraint = brdefinition.get("TRIGGER_STATEMENT");
+
+        String query = "SELECT TEMPLATE_VALUE FROM GTEMPLATE where GLANGUAGE_LANG_ID=" + languageID + " AND GRULETYPE_RULETYPE_ID=" + ruletypeID + " AND TRIGGER_STATEMENT='" + triggerOrConstraint + "'";
         ResultSet rs = null;
         String templateValue = null;
         try {
@@ -25,6 +30,7 @@ class TemplateDAO {
                 }
 
         } catch (SQLException e) {
+            e.printStackTrace();
             System.out.println("ERROR: Unable to Connect to Database.");
         }
         finally {

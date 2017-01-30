@@ -4,6 +4,7 @@ package Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Map;
 
 class Jdbc {
 
@@ -38,7 +39,10 @@ class Jdbc {
         return instance.createConnection(DB_URL, USER, PASS);
     }
 
-    static Connection getTargetConnection(String DB_URL, String USER, String PASS) {
+    static Connection getTargetConnection(Map<String, String> DBCredentials) {
+        String DB_URL = DBCredentials.get("DB_URL");
+        String USER = DBCredentials.get("USER");
+        String PASS = DBCredentials.get("PASS");
         return instance.createConnection(DB_URL, USER, PASS);
     }
 }
