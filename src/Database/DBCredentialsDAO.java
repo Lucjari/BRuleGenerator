@@ -17,7 +17,7 @@ class DBCredentialsDAO {
 
         String query = "SELECT DATABASE_USERNAME, DATABASE_PASSWORD, CONNECTION_STRING FROM GCUSTOMER where CUS_ID='" + customerID + "'";
         ResultSet rs = null;
-        Map DBCredentials = new HashMap();
+        Map<String, String> DBCredentials = new HashMap<>();
 
         try{
             connection = Jdbc.getToolConnection();
@@ -30,8 +30,11 @@ class DBCredentialsDAO {
                 DBCredentials.put("DB_URL", rs.getString("CONNECTION_STRING"));
                     }
 
+            return DBCredentials;
+
         } catch (SQLException e) {
             System.out.println("ERROR: Unable to Connect to Database.");
+            throw new SQLException(e);
         }
         finally {
             if (rs != null){
@@ -42,7 +45,7 @@ class DBCredentialsDAO {
                 connection.close();
                 System.out.println("Connection to database closed.");}
 
-            return DBCredentials;
+
         }
 
     }

@@ -11,7 +11,8 @@ public class Main {
 
 
 
-//        gen.getTemplate(gen.getBRDefinition(2));
-        gen.generateTemplate(59);
+//        System.out.println(gen.getTemplate(gen.getBRDefinition(62)));
+        //gen.executeTemplate(59);
+
     }
 }

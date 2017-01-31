@@ -13,7 +13,7 @@ class BRDefinitionDAO {
     Map getBusinessRuleDefinition(int brID) throws SQLException {
         String query = "SELECT * FROM GRULE WHERE RULE_ID = " + brID;
         ResultSet rs = null;
-        Map BRDef = new HashMap();
+        Map<String, String> BRDef = new HashMap<>();
 
         try{
             connection = Jdbc.getToolConnection();
@@ -31,8 +31,11 @@ class BRDefinitionDAO {
                 }
             }
 
+            return BRDef;
+
         } catch (SQLException e) {
             System.out.println("ERROR: Unable to Connect to Database.");
+            throw new SQLException(e);
     }
         finally {
             if (rs != null){
@@ -43,7 +46,7 @@ class BRDefinitionDAO {
                 connection.close();
             System.out.println("Connection to database closed.");}
 
-            return BRDef;
+
     }
 
     }

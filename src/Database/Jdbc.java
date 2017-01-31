@@ -20,18 +20,19 @@ class Jdbc {
         }
     }
 
-    private Connection createConnection(String DB_URL, String USER, String PASS) {
-        Connection connection = null;
+    private Connection createConnection(String DB_URL, String USER, String PASS) throws SQLException{
+        Connection connection;
         try {
             System.out.println("Connecting to database...");
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
             System.out.println("ERROR: Unable to Connect to Database.");
+            throw new SQLException(e);
         }
         return connection;
     }
 
-    static Connection getToolConnection() {
+    static Connection getToolConnection() throws SQLException{
         String DB_URL = "jdbc:oracle:thin:@//ondora02.hu.nl:8521/cursus02.hu.nl";
         String USER = "tosad_2016_2b_team4";
         String PASS = "tosad_2016_2b_team4";
@@ -39,7 +40,7 @@ class Jdbc {
         return instance.createConnection(DB_URL, USER, PASS);
     }
 
-    static Connection getTargetConnection(Map<String, String> DBCredentials) {
+    static Connection getTargetConnection(Map<String, String> DBCredentials) throws SQLException{
         String DB_URL = DBCredentials.get("DB_URL");
         String USER = DBCredentials.get("USER");
         String PASS = DBCredentials.get("PASS");

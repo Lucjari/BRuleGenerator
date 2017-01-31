@@ -29,9 +29,11 @@ class TemplateDAO {
                     templateValue = rs.getString("TEMPLATE_VALUE");
                 }
 
+            return templateValue;
+
         } catch (SQLException e) {
-            e.printStackTrace();
             System.out.println("ERROR: Unable to Connect to Database.");
+            throw new SQLException(e);
         }
         finally {
             if (rs != null){
@@ -41,8 +43,6 @@ class TemplateDAO {
             if (connection != null){
                 connection.close();
                 System.out.println("Connection to database closed.");}
-
-            return templateValue;
     }
 
 }
