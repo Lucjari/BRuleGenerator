@@ -17,7 +17,7 @@ class DBCredentialsDAO {
 
         String query = "SELECT DATABASE_USERNAME, DATABASE_PASSWORD, CONNECTION_STRING FROM GCUSTOMER where CUS_ID='" + customerID + "'";
         ResultSet rs = null;
-        Map<String, String> DBCredentials = new HashMap<>();
+        Map<String, String> DBCredentials = new HashMap();
 
         try{
             connection = Jdbc.getToolConnection();

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BRuleGenerator.iml" filepath="$PROJECT_DIR$/.idea/BRuleGenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BGenerator.iml" filepath="$PROJECT_DIR$/BGenerator.iml" />
     </modules>
   </component>
 </project>

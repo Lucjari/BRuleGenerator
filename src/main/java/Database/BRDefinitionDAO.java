@@ -13,7 +13,7 @@ class BRDefinitionDAO {
     Map getBusinessRuleDefinition(int brID) throws SQLException {
         String query = "SELECT * FROM GRULE WHERE RULE_ID = " + brID;
         ResultSet rs = null;
-        Map<String, String> BRDef = new HashMap<>();
+        Map<String, String> BRDef = new HashMap();
 
         try{
             connection = Jdbc.getToolConnection();

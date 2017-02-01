@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BGenerator:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="BGen.war">
+      <element id="artifact" artifact-name="BGenerator:war exploded" />
+    </root>
+  </artifact>
+</component>
