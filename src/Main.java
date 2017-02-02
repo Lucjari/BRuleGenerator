@@ -11,6 +11,6 @@ public class Main {
 
 
 //         gen.executeTemplate(59, "INSERT");
-         gen.deleteBusinessRule(59);
+//         gen.deleteBusinessRule(59);
     }
 }
