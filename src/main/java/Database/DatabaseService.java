@@ -8,22 +8,35 @@ public class DatabaseService {
     private BRDefinitionDAO definitionDAO = new BRDefinitionDAO();
     private TemplateDAO templateDAO = new TemplateDAO();
     private DBCredentialsDAO credentialsDAO = new DBCredentialsDAO();
-    private BRImplementDAO implementDAO = new BRImplementDAO();
+    private BRImplementDAO brImplementDAO = new BRImplementDAO();
+    private BRDImplementDAO brdImplementDAO = new BRDImplementDAO();
 
     public Map getBRDefinition(int brID) throws SQLException{
         return definitionDAO.getBusinessRuleDefinition(brID);
     }
 
-    public String getTemplate(Map<String, String> brdefinition) throws SQLException{
-        return templateDAO.getTemplate(brdefinition);
+    public String getTemplate(Map<String, String> BRDefinition) throws SQLException{
+        return templateDAO.getTemplate(BRDefinition);
     }
 
-    public Map getDBCredentials(Map<String, String> brdefinition) throws SQLException{
-        return credentialsDAO.getDBCredentials(brdefinition);
+    public Map getDBCredentials(Map<String, String> BRDefinition) throws SQLException{
+        return credentialsDAO.getDBCredentials(BRDefinition);
     }
 
     public void sendBusinessRule(String businessRule, Map<String, String> DBCredentials) throws SQLException{
-        implementDAO.sendBusinessRule(businessRule, DBCredentials);
+        brImplementDAO.sendBusinessRule(businessRule, DBCredentials);
+    }
+
+    public void deleteBusinessRule(Map<String, String> BRDefinition, Map<String, String> DBCredentials) throws SQLException{
+        brImplementDAO.deleteBusinessRule(BRDefinition, DBCredentials);
+    }
+
+    public void BRDtoTarget(Map<String, String> DBCredentials, Map<String, String> BRDefinition, String Action) throws SQLException {
+        brdImplementDAO.BRDtoTarget(DBCredentials, BRDefinition, Action);
+    }
+
+    public void deleteBRDTarget(Map<String, String> DBCredentials, Map<String, String> BRDefinition) throws SQLException {
+        brdImplementDAO.deleteBRDTarget(DBCredentials, BRDefinition);
     }
 
 }

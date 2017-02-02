@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-//Deze DAO klasse haalt de businessrule definities uit de tooldatabase die overeenkomen met de te genereren businessrule
+//This DAO fetches the businessrule definitions for the rule to be generated
 class BRDefinitionDAO {
     private Connection connection;
     private Statement statement;

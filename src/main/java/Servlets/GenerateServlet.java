@@ -20,16 +20,22 @@ public class GenerateServlet extends HttpServlet {
         GeneratorService gen = new GeneratorService();
         String code = req.getParameter("code");
         String ruleid = req.getParameter("ruleid");
+        String action = req.getParameter("action");
         String respString = "";
         if (code != null) {System.out.println(code);}
         if (code.equals("2h8xx92") && ruleid != null) {
             try {
                 try {
-                    gen.executeTemplate(Integer.parseInt(ruleid));
+                    if (action.equals("INSERT") || action.equals("UPDATE")) {
+                        gen.executeTemplate(Integer.parseInt(ruleid), action);
+                    } else if (action.equals("DELETE")) {
+                        gen.deleteBusinessRule(Integer.parseInt(ruleid));
+                    }
+
                 } catch (NumberFormatException e) { e.printStackTrace(); }
             }
             catch (SQLException e) { e.printStackTrace(); }
-            resp.getWriter().write("SUCCESSFULLY ACTIVATED " + ruleid);
+            resp.getWriter().write("SUCCESS");
         } else {
             resp.getWriter().write("FAILED");
         }
