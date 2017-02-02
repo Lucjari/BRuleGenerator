@@ -10,9 +10,7 @@ public class Main {
         GeneratorService gen = new GeneratorService();
 
 
-
-      //System.out.println(gen.getTemplate(gen.getBRDefinition(93)));
-      //  gen.executeTemplate(171, "UPDATE");
-
+//         gen.executeTemplate(59, "INSERT");
+         gen.deleteBusinessRule(59);
     }
 }

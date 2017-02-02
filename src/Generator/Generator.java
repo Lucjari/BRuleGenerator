@@ -27,5 +27,12 @@ class Generator {
         dbService.BRDtoTarget(DBCredentials, BRDefinition, Action);
 
     }
+
+    void deleteBusinessRule(int brID) throws SQLException{
+        Map<String, String> BRDefinition = dbService.getBRDefinition(brID);
+        Map<String, String> DBCredentials = dbService.getDBCredentials(BRDefinition);
+        dbService.deleteBusinessRule(BRDefinition, DBCredentials);
+        dbService.deleteBRDTarget(DBCredentials, BRDefinition);
+    }
 }
 

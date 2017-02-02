@@ -14,4 +14,8 @@ public class GeneratorService {
         generator.executeTemplate(brID, Action);
     }
 
+    public void deleteBusinessRule(int brID) throws SQLException{
+        generator.deleteBusinessRule(brID);
+    }
+
 }

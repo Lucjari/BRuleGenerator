@@ -27,8 +27,16 @@ public class DatabaseService {
         brImplementDAO.sendBusinessRule(businessRule, DBCredentials);
     }
 
+    public void deleteBusinessRule(Map<String, String> BRDefinition, Map<String, String> DBCredentials) throws SQLException{
+        brImplementDAO.deleteBusinessRule(BRDefinition, DBCredentials);
+    }
+
     public void BRDtoTarget(Map<String, String> DBCredentials, Map<String, String> BRDefinition, String Action) throws SQLException {
         brdImplementDAO.BRDtoTarget(DBCredentials, BRDefinition, Action);
+    }
+
+    public void deleteBRDTarget(Map<String, String> DBCredentials, Map<String, String> BRDefinition) throws SQLException {
+        brdImplementDAO.deleteBRDTarget(DBCredentials, BRDefinition);
     }
 
 }

@@ -1,23 +1,25 @@
 package Database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
 
 
-//Deze DAO klasse stuurt de query van de gegenereerde businessrule naar de target database om uit te voeren
+//This DAO inserts, updates or deletes triggers / constraints to / from target Database
 class BRImplementDAO {
     private Connection connection;
     private Statement generatedTemplateStatement;
+    private PreparedStatement deleteStatement;
 
+    //apply trigger or constraint to target database
     void sendBusinessRule(String businessRule, Map<String, String> DBCredentials) throws SQLException {
 
         try{
             connection = Jdbc.getTargetConnection(DBCredentials);
             generatedTemplateStatement = connection.createStatement();
 
-            //Uitvoeren van de trigger / constraint op de target database
             generatedTemplateStatement.executeQuery(businessRule);
 
 
@@ -32,5 +34,30 @@ class BRImplementDAO {
         }
     }
 
+    //delete trigger or constraint from target database
+    void deleteBusinessRule(Map<String, String> BRDefinition, Map<String, String> DBCredentials) throws SQLException {
+
+        try{
+            connection = Jdbc.getTargetConnection(DBCredentials);
+
+            if (BRDefinition.get("TRIGGER_STATEMENT").equals("TRIGGER")){
+                deleteStatement = connection.prepareStatement("DROP TRIGGER " + BRDefinition.get("NAME"));
+            }
+            else if (BRDefinition.get("TRIGGER_STATEMENT").equals("CONSTRAINT")){
+                deleteStatement = connection.prepareStatement("ALTER TABLE" + BRDefinition.get("TARGET_TABLE") +" DROP CONSTRAINT " + BRDefinition.get("NAME"));
+            }
+
+            deleteStatement.executeQuery();
+        }
+        finally{
+            if (deleteStatement != null){
+                deleteStatement.close();
+            }
+            if (connection != null){
+                connection.close();
+                System.out.println("Connection to database closed.");
+            }
+        }
+    }
 
 }

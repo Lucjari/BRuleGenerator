@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
-//Deze DAO klasse haalt de target database credentials van de user op
+//This DAO fetches the users' database credentials
 class DBCredentialsDAO {
     private Connection connection;
     private Statement statement;
