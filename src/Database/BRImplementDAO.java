@@ -9,23 +9,28 @@ import java.util.Map;
 //Deze DAO klasse stuurt de query van de gegenereerde businessrule naar de target database om uit te voeren
 class BRImplementDAO {
     private Connection connection;
-    private Statement statement;
+    private Statement generatedTemplateStatement;
 
     void sendBusinessRule(String businessRule, Map<String, String> DBCredentials) throws SQLException {
 
         try{
             connection = Jdbc.getTargetConnection(DBCredentials);
-            statement = connection.createStatement();
+            generatedTemplateStatement = connection.createStatement();
 
-            statement.executeQuery(businessRule);
+            //Uitvoeren van de trigger / constraint op de target database
+            generatedTemplateStatement.executeQuery(businessRule);
+
+
         }
 
         finally{
-            if (statement != null){
-                statement.close();}
+            if (generatedTemplateStatement != null){
+                generatedTemplateStatement.close();}
             if (connection != null){
                 connection.close();
                 System.out.println("Connection to database closed.");}
         }
     }
+
+
 }

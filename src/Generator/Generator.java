@@ -18,12 +18,13 @@ class Generator {
         return template;
     }
 
-    void executeTemplate(int brID) throws SQLException{
+    void executeTemplate(int brID, String Action) throws SQLException{
         Map<String, String> BRDefinition = dbService.getBRDefinition(brID);
         Map<String, String> DBCredentials = dbService.getDBCredentials(BRDefinition);
         String generatedTemplate = generateTemplate(brID);
 
         dbService.sendBusinessRule(generatedTemplate, DBCredentials);
+        dbService.BRDtoTarget(DBCredentials, BRDefinition, Action);
 
     }
 }

@@ -10,8 +10,8 @@ public class GeneratorService {
         return generator.generateTemplate(brID);
     }
 
-    public void executeTemplate(int brID) throws SQLException{
-        generator.executeTemplate(brID);
+    public void executeTemplate(int brID, String Action) throws SQLException{
+        generator.executeTemplate(brID, Action);
     }
 
 }

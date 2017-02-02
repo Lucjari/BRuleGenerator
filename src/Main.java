@@ -12,7 +12,7 @@ public class Main {
 
 
       //System.out.println(gen.getTemplate(gen.getBRDefinition(93)));
-       // gen.executeTemplate(93);
+      //  gen.executeTemplate(171, "UPDATE");
 
     }
 }
