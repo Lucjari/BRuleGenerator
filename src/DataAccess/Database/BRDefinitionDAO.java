@@ -1,4 +1,4 @@
-package Database;
+package DataAccess.Database;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ class BRDefinitionDAO {
             return BRDef;
 
         } catch (SQLException e) {
-            System.out.println("ERROR: Unable to Connect to Database.");
+            System.out.println("ERROR: Unable to Connect to DataAccess.Database.");
             throw new SQLException(e);
     }
         finally {

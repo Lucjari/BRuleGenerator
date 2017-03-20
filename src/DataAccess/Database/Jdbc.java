@@ -1,4 +1,4 @@
-package Database;
+package DataAccess.Database;
 
 
 import java.sql.Connection;
@@ -26,7 +26,7 @@ class Jdbc {
             System.out.println("Connecting to database...");
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
-            System.out.println("ERROR: Unable to Connect to Database.");
+            System.out.println("ERROR: Unable to Connect to DataAccess.Database.");
             throw new SQLException(e);
         }
         return connection;

@@ -1,4 +1,4 @@
-import Generator.GeneratorService;
+import Control.Generator.GeneratorService;
 
 import java.sql.SQLException;
 

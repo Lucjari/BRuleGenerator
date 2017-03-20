@@ -1,7 +1,6 @@
-package Generator;
+package Control.Generator;
 
 import java.sql.SQLException;
-import java.util.Map;
 
 public class GeneratorService {
     private Generator generator = new Generator();

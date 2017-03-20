@@ -1,4 +1,4 @@
-package Database;
+package DataAccess.Database;
 
 import java.sql.SQLException;
 import java.util.Map;

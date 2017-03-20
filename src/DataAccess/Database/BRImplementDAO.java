@@ -1,4 +1,4 @@
-package Database;
+package DataAccess.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.Map;
 
 
-//This DAO inserts, updates or deletes triggers / constraints to / from target Database
+//This DAO inserts, updates or deletes triggers / constraints to / from target DataAccess.Database
 class BRImplementDAO {
     private Connection connection;
     private Statement generatedTemplateStatement;

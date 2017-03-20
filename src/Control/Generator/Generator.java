@@ -1,6 +1,6 @@
-package Generator;
+package Control.Generator;
 
-import Database.DatabaseService;
+import DataAccess.Database.DatabaseService;
 
 import java.sql.SQLException;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package Database;
+package DataAccess.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,9 +17,9 @@ class BRDImplementDAO {
             connection = Jdbc.getTargetConnection(DBCredentials);
 
             if (Action.equals("INSERT")) {
-                BRDStatement = connection.prepareStatement("INSERT INTO GRULE (RULE_ID, DESCRIPTION, NAME, TARGET_TABLE, TARGET_COLUMN, TRIGGER_EVENT, OPERATOR, VALUE, VALUE2, COMPARE_TABLE, COMPARE_COLUMN, TRIGGER_ON, TRIGGER_STATEMENT, ISACTIVE, GRULETYPE_RULETYPE_ID, GLANGUAGE_LANG_ID) VALUES ('" + BRDefinition.get("RULE_ID") + "',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                BRDStatement = connection.prepareStatement("INSERT INTO GRULE (RULE_ID, DESCRIPTION, NAME, TARGET_TABLE, TARGET_COLUMN, TRIGGER_EVENT, OPERATOR, VALUE, VALUE2, COMPARE_TABLE, COMPARE_COLUMN, TRIGGER_ON, TRIGGER_STATEMENT, ISACTIVE, GCUSTOMER_CUS_ID, GRULETYPE_RULETYPE_ID, GLANGUAGE_LANG_ID) VALUES ('" + BRDefinition.get("RULE_ID") + "',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             } else if (Action.equals("UPDATE")) {
-                BRDStatement = connection.prepareStatement("UPDATE GRULE SET DESCRIPTION = ?, NAME = ?, TARGET_TABLE = ?, TARGET_COLUMN = ?, TRIGGER_EVENT = ?, OPERATOR = ?, VALUE = ?, VALUE2 = ?, COMPARE_TABLE = ?, COMPARE_COLUMN = ?, TRIGGER_ON = ?, TRIGGER_STATEMENT = ?, ISACTIVE = ?, GRULETYPE_RULETYPE_ID = ?, GLANGUAGE_LANG_ID = ? WHERE NAME= '" + BRDefinition.get("NAME") + "'");
+                BRDStatement = connection.prepareStatement("UPDATE GRULE SET DESCRIPTION = ?, NAME = ?, TARGET_TABLE = ?, TARGET_COLUMN = ?, TRIGGER_EVENT = ?, OPERATOR = ?, VALUE = ?, VALUE2 = ?, COMPARE_TABLE = ?, COMPARE_COLUMN = ?, TRIGGER_ON = ?, TRIGGER_STATEMENT = ?, ISACTIVE = ?, GCUSTOMER_CUS_ID = ?, GRULETYPE_RULETYPE_ID = ?, GLANGUAGE_LANG_ID = ? WHERE NAME= '" + BRDefinition.get("NAME") + "'");
             }
             BRDStatement.setString(1, BRDefinition.get("DESCRIPTION"));
             BRDStatement.setString(2, BRDefinition.get("NAME"));
@@ -35,7 +35,8 @@ class BRDImplementDAO {
             BRDStatement.setString(12, BRDefinition.get("TRIGGER_STATEMENT"));
             BRDStatement.setInt(13, 1);
             BRDStatement.setInt(14, Integer.parseInt(BRDefinition.get("GCUSTOMER_CUS_ID")));
-            BRDStatement.setInt(15, Integer.parseInt(BRDefinition.get("GLANGUAGE_LANG_ID")));
+            BRDStatement.setInt(15, Integer.parseInt(BRDefinition.get("GRULETYPE_RULETYPE_ID")));
+            BRDStatement.setInt(16, Integer.parseInt(BRDefinition.get("GLANGUAGE_LANG_ID")));
 
 
             BRDStatement.executeQuery();
